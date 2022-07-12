@@ -39,7 +39,8 @@ _.identity = function (value) {
 * typeOf: designed to take in a value and return that value's type.
 *
 * @param {value}: any value.
-* @param {function} value: the function to be applied to the value.
+*
+* @return {string}: returns the datatype of the input value as a string.
 */
 _.typeOf = function (value) {
     if (typeof value === "string") {
@@ -64,10 +65,13 @@ _.typeOf = function (value) {
 
 
 /*
-* first: designed to return the first number in an array.
+* first: designed to return the first x number of elements in the array as determined by the input number.
 *
 * @param {array}: an array to use the function on.
-* @param {function} number: the function to be applied to the number entered.
+* @param {function} number: the number that determines how many of the first elements of the array to return.
+*
+* @return {array}: returns the first elements in the array according to the input number. If no number entered,
+* returns the first element, otherwise if not an array, returns an empty array.
 */
 _.first = function (array, number) {
     if (number === null || typeof number !== "number") {
@@ -85,10 +89,13 @@ _.first = function (array, number) {
 
 
 /*
-* last: designed to return the last number of an array.
+* last: designed to return the last x number of elements in the array, determined by the input number.
 *
 * @param {array}: an array to use the function on.
-* @param {function} number: the function to be applied to the number entered.
+* @param {function} number: the function that determines how many of the last elements of the array to return.
+*
+* @return {array}: returns the last elements in the array according to the input number. If no number entered,
+* returns the last element, otherwise if not an array, returns an empty array.
 */
 _.last = function (array, number) {
     if (number === null || typeof number !== "number") {
