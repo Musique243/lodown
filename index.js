@@ -174,6 +174,7 @@ _.unique = function (array) {
 *
 * @param {array}: an array to iterate through.
 * @param {function} func: the function to be applied to each element in the array.
+*
 * @return {array}: returns a new array of elements that passed the callback function which resulted true.
 */
 _.filter = function (array, func) {
@@ -188,10 +189,13 @@ _.filter = function (array, func) {
 
 
 /*
-* reject: designed to loop through an array and return an array with elements that don't pass the arguments.
+* reject: loops through an array and passes each value into a callback function. If the result of the callback
+* function is false, the array value is pushed to an output array that reject returns.
 *
 * @param {array}: array to loop through.
 * @param {function} func: the function to be applied to each element in the array.
+*
+* @return {array}: returns a new array of elements that passed the callback function and resulted false.
 */
 _.reject = function (array, func) {
     var rejected = [];
@@ -209,6 +213,9 @@ _.reject = function (array, func) {
 *
 * @param {array}: the array to iterate through.
 * @param {function} func: function to pass the values through to determing truthy or falsy values.
+*
+* @return {array}: returns an array of two arrays separated by the elements that resulted in truthy and falsy 
+* when passed into the function. 
 */
 _.partition = function (array, func) {
     var arr1 = [];
@@ -228,10 +235,13 @@ _.partition = function (array, func) {
 
 
 /*
-* map: designed to loop through an array and return a new array with the values passed through the function.
+* map: function loops through an array and passes each value to a callback function. The return
+* value of the callback function is pushed into an output array that map returns.
 *
 * @param {array}: an array to loop through.
 * @param {function} func: the function to pass the values in.
+*
+* @return {array}: returns  a new array of the returned values of the callback function.
 */
 _.map = function(collection, func) {
     var newArr = [];
@@ -252,7 +262,7 @@ return newArr;
 * pluck: designed to loop through an array of objects and return the values from the specified property.
 *
 * @param {array}: an array of objects to loop through.
-* @param {function} property: the function to pass the property through.
+* @param {string}: a string reperesenting the property to pluck the values from
 */
 _.pluck = function(array, property) {
     var result = _.map(array, function(element) {
@@ -267,6 +277,9 @@ _.pluck = function(array, property) {
 *
 * @param {collection}: an array or object to iterate through.
 * @param {function} func: function that is testing the elements of array or object.
+*
+* @return: returns true if every element passed through the function resulted in true. If
+* even one value results in false, function returns false.
 */
 _.every = function (collection, func) {
     var isFalse = 0;
@@ -312,6 +325,9 @@ _.every = function (collection, func) {
 *
 * @param {collection}: an array or object.
 * @param {function}func: function designed to test if value passes the test.
+*
+* @return: returns true if the result of the returned value of the functon is true for at least one value.
+* If the all returned values are false, the function returns false.
 */
 _.some = function(collection, func) {
     //if function if undefined
@@ -364,8 +380,10 @@ _.some = function(collection, func) {
 * reduce: designed to loop through an array and return a single value.
 *
 * @param {array}: the array to loop through.
-* @param {function}func: function to test the elements with.
-* @param {seed}: accumulates the value of each iteration.
+* @param {function}: function that will accumulate the single return value that reduce returns.
+* @param {seed}: initializes the accumulator value in the callback function.
+* @return: returns the output value that is returned from the callback function on the final iteration of the array.
+*
 */
 _.reduce = function (array, func, seed) {
     if (seed === undefined) {
