@@ -116,7 +116,10 @@ _.last = function (array, number) {
 * indexOf: designed to loop through an array and return the index of a specific value.
 * 
 * @param {array}: the array to loop through.
-* @param {function} value: the function value to look for in the array.
+* @param {value}: the function takes in a value to search for in the input array.
+*
+* @return: if input value is found in array, function will return the index number of the value,
+* if input value is not found, function returns -1.
 */
 _.indexOf = function (array, value) {
     for (var i = 0; i < array.length; i++) {
@@ -132,7 +135,10 @@ _.indexOf = function (array, value) {
 * contains: designed to loop through an array and return whether the value is in the array.
 *
 * @param {array}: the array to loop through.
-* @param {funtion} value: the function to be applied to the specific value.
+* @param {value}: the function takes in a value to search for in the array.
+*
+* @return: if the input value is found in the array, function returns false,
+* if input value is not in array, function returns false.
 */
 _.contains = function (array, value) {
     var containsVal = false;
@@ -149,6 +155,7 @@ _.contains = function (array, value) {
 *
 * @param {array}: the array to loop through.
 * 
+* @return {array}: function returns a new array of elements in the input array with duplicate elements removed.
 */
 _.unique = function (array) {
     var newArr = [];
@@ -162,10 +169,12 @@ _.unique = function (array) {
 
 
 /*
-* filter: designed to loop through an array and return an array with elements that passed the arguments.
+* filter: loops through an array and passes each value into a callback function. If the result of the
+* callback function is true, the array value is pushed to an output array that filter returns.
 *
 * @param {array}: an array to iterate through.
 * @param {function} func: the function to be applied to each element in the array.
+* @return {array}: returns a new array of elements that passed the callback function which resulted true.
 */
 _.filter = function (array, func) {
     var filtered = [];
