@@ -25,15 +25,15 @@ module.exports.each = each;
 
 
 /*
-* identity: designed to take in a value and return that value unchanged.
+* identity: function takes in any value and returns that value unchanged.
 *
-* @param {value}: any value.
-* @param {function} value: the function to be applied to any value.
+* @param {any value} value: function takes in any value.
+* @returns {any value} value: the function returns input value unchanged.
 */
 _.identity = function (value) {
     return value;
 }
-
+module.exports.identity = identity;
 
 /*
 * typeOf: designed to take in a value and return that value's type.
