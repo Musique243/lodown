@@ -36,42 +36,33 @@ _.identity = function (value) {
 module.exports.identity = identity;
 
 /*
-* typeOf: designed to take in a value and return that value's type.
+* typeOf: designed to take in any value and return that value's type.
 *
-* @param {value}: any value.
+* @param {any value} value: function takes in any value.
 *
-* @return {string}: returns the datatype of the input value as a string.
+* @return {string}: function returns the datatype of the input value as a string.
 */
 _.typeOf = function (value) {
-    if (typeof value === "string") {
-        return "string";
-    } else if (Array.isArray(value)) {
-        return "array";
-    } else if (typeof value === "number") {
-        return "number";
-    } else if (typeof value === "undefined") {
-        return "undefined";
-    } else if (typeof value === "boolean") {
-        return "boolean";
-    } else if (typeof value === "object" && value === null) {
+    if (typeof value === "object" && value === null) {
         return "null";
-    } else if (typeof value === "function") {
-        return "function";
-    } else {
+    }else if (typeof value === "object" && !Array.isArray(value) && value !== null) {
         return "object";
+    }else if (Array.isArray(value)) {
+        return "array";
+    }else{
+        return typeof value;
     }
-
 }
 
 
 /*
 * first: designed to return the first x number of elements in the array as determined by the input number.
 *
-* @param {array}: an array to use the function on.
-* @param {number}: the number that determines how many of the first elements of the array to return.
+* @param {array} array: the input array to use the function on.
+* @param {number} number: the number that determines how many of the first elements of the array to return.
 *
-* @return {array}: returns the first elements in the array according to the input number. If no number entered,
-* returns the first element, otherwise if not an array, returns an empty array.
+* @return {array}: function returns the first elements in the array according to the input number. If no number entered,
+* function returns the first element, otherwise if not an array, returns an empty array.
 */
 _.first = function (array, number) {
     if (number === null || typeof number !== "number") {
@@ -89,9 +80,9 @@ _.first = function (array, number) {
 
 
 /*
-* last: designed to return the last x number of elements in the array, determined by the input number.
+* last: function returns the last x number of elements in the array, determined by the input number.
 *
-* @param {array}: an array to use the function on.
+* @param {array} array: the input array to use the function on.
 * @param {number}: the function that determines how many of the last elements of the array to return.
 *
 * @return {array}: returns the last elements in the array according to the input number. If no number entered,
@@ -113,12 +104,12 @@ _.last = function (array, number) {
 
 
 /*
-* indexOf: designed to loop through an array and return the index of a specific value.
+* indexOf: function is designed to loop through an array and return the index of a specific value.
 * 
-* @param {array}: the array to loop through.
-* @param {value}: the function takes in a value to search for in the input array.
+* @param {array} array: the input array to iterate through.
+* @param {value} value: the function takes in a target value to search for in the input array.
 *
-* @return: if input value is found in array, function will return the index number of the value,
+* @return: if target value is found in array, function will return the index number of the value,
 * if input value is not found, function returns -1.
 */
 _.indexOf = function (array, value) {
@@ -132,13 +123,13 @@ _.indexOf = function (array, value) {
 
 
 /*
-* contains: designed to loop through an array and return whether the value is in the array.
+* contains: function loops through an array and returns whether the target value exists in the array.
 *
-* @param {array}: the array to loop through.
-* @param {value}: the function takes in a value to search for in the array.
+* @param {array} array: the input array to iterate through.
+* @param {value} value: the function takes in a target value to search for in the array.
 *
-* @return: if the input value is found in the array, function returns false,
-* if input value is not in array, function returns false.
+* @return: if the target value exists in the array, function returns true,
+* if target value is not in the array, function returns false.
 */
 _.contains = function (array, value) {
     var containsVal = false;
@@ -151,9 +142,9 @@ _.contains = function (array, value) {
 
 
 /*
-* unique: designed to loop through an array and return a new array with duplicate values removed.
+* unique: the function loops through an array and returns a new array with duplicate values removed.
 *
-* @param {array}: the array to loop through.
+* @param {array} array: the array to loop through.
 * 
 * @return {array}: function returns a new array of elements in the input array with duplicate elements removed.
 */
@@ -169,13 +160,13 @@ _.unique = function (array) {
 
 
 /*
-* filter: loops through an array and passes each value into a callback function. If the result of the
-* callback function is true, the array value is pushed to an output array that filter returns.
+* filter: function loops through an array and passes each value into a callback function. If the result of passing the
+* callback function to the value is true, the value is pushed to an output array.
 *
-* @param {array}: an array to iterate through.
+* @param {array} array: an input array to iterate through.
 * @param {function} func: the function to be applied to each element in the array.
 *
-* @return {array}: returns a new array of elements that passed the callback function which resulted true.
+* @return {array}: function returns a new array of elements that passed the callback function which resulted in true.
 */
 _.filter = function (array, func) {
     var filtered = [];
@@ -189,13 +180,13 @@ _.filter = function (array, func) {
 
 
 /*
-* reject: loops through an array and passes each value into a callback function. If the result of the callback
-* function is false, the array value is pushed to an output array that reject returns.
+* reject: function loops through an input array and passes each value into a callback function. If the result of the callback
+* function is false, the array value is pushed to an output array that the reject function returns.
 *
-* @param {array}: array to loop through.
+* @param {array} array: the input array to loop through.
 * @param {function} func: the function to be applied to each element in the array.
 *
-* @return {array}: returns a new array of elements that passed the callback function and resulted false.
+* @return {array}: returns a new array of elements that passed the callback function and resulted in false.
 */
 _.reject = function (array, func) {
     var rejected = [];
@@ -209,10 +200,10 @@ _.reject = function (array, func) {
 
 
 /*
-* partition: designed to loop through an array and return 2 arrays with truthy and falsy values separated.
+* partition: function loops through an input array and returns 2 arrays with truthy and falsy values separated.
 *
-* @param {array}: the array to iterate through.
-* @param {function} func: function to pass the values through to determing truthy or falsy values.
+* @param {array} array: the input array to iterate through.
+* @param {function} func: function to pass the values through to determine truthy or falsy values.
 *
 * @return {array}: returns an array of two arrays separated by the elements that resulted in truthy and falsy 
 * when passed into the function. 
@@ -236,12 +227,12 @@ _.partition = function (array, func) {
 
 /*
 * map: function loops through an array and passes each value to a callback function. The return
-* value of the callback function is pushed into an output array that map returns.
+* value of the callback function is pushed into an output array that the map function returns.
 *
-* @param {array}: an array to loop through.
-* @param {function} func: the function to pass the values in.
+* @param {array} collection: an input array to loop through.
+* @param {function} func: the function to pass the values through.
 *
-* @return {array}: returns  a new array of the returned values of the callback function.
+* @return {array}: returns a new array of the values after being passed through the callback function.
 */
 _.map = function(collection, func) {
     var newArr = [];
@@ -261,8 +252,8 @@ return newArr;
 /*
 * pluck: designed to loop through an array of objects and return the values from the specified property.
 *
-* @param {array}: an array of objects to loop through.
-* @param {string}: a string reperesenting the property to pluck the values from
+* @param {array} array: an array of objects to loop through.
+* @param {string} property: a string reperesenting the property to take the values from
 */
 _.pluck = function(array, property) {
     var result = _.map(array, function(element) {
@@ -273,16 +264,15 @@ _.pluck = function(array, property) {
 
 
 /*
-* every: designed to loop through array or object and test if all elements pass the function.
+* every: function loops through the input array or object and tests if all elements/values pass the function.
 *
-* @param {collection}: an array or object to iterate through.
-* @param {function} func: function that is testing the elements of array or object.
+* @param {array/object} collection: an array or object to iterate through.
+* @param {function} func: function that is passed through the elements/values of array or object.
 *
 * @return: returns true if every element passed through the function resulted in true. If
 * even one value results in false, function returns false.
 */
 _.every = function (collection, func) {
-    var isFalse = 0;
     if(func === undefined) {
         if(Array.isArray(collection)) {
             for (var i = 0; i < collection.length; i++) {
