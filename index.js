@@ -311,10 +311,10 @@ _.every = function (collection, func) {
 
 
 /*
-* some: designed to loop through an array or object and test if at least one element passes the test.
+* some: function loops through an input array or object and tests if at least one element passes the test when passed through the function.
 *
-* @param {collection}: an array or object.
-* @param {function}func: function designed to test if value passes the test.
+* @param {array/object} collection: an input array or object.
+* @param {function}func: function designed to test if element/value passes the test.
 *
 * @return: returns true if the result of the returned value of the functon is true for at least one value.
 * If the all returned values are false, the function returns false.
@@ -367,9 +367,9 @@ _.some = function(collection, func) {
 
 
 /*
-* reduce: designed to loop through an array and return a single value.
+* reduce: function loops through an input array and returns a single value.
 *
-* @param {array}: the array to loop through.
+* @param {array} array: the input array to loop through.
 * @param {function}: function that will accumulate the single return value that reduce returns.
 * @param {seed}: initializes the accumulator value in the callback function.
 * @return: returns the output value that is returned from the callback function on the final iteration of the array.
@@ -394,8 +394,10 @@ _.reduce = function (array, func, seed) {
 /*
 * extend: designed to loop through an object and put that data into another object.
 *
-* @param {object}: object to loop through.
+* @param {object}: the input object to loop through.
 * @param {objects}: the objects to get the values from.
+*
+* @return: returns the updated object with the copied values
 */
 _.extend = function(obj1, ...objects) {
     for (var i = 0; i < objects.length; i++) {
